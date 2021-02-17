@@ -2,7 +2,7 @@ version: '3.5'
 services:
   haproxy:
     build: .
-    image: nickadam/haproxy-dev:1.0
+    image: nickadam/haproxy-dev:1.1
     environment:
       - DEV_COMMON_NAME=myservice.example.com
       - DEV_ALT_NAMES=*.example.com,*.example.net,*.inst.example.com,example.com,example.net,127.0.0.1

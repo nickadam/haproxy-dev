@@ -26,7 +26,7 @@ EOF
 
 if [ ! -f /keys/rootCA.pem ]
 then
-  openssl req -x509 -new -nodes -key /keys/rootCA.key -days 1024 -out /keys/rootCA.pem -config <( cat /keys/openssl.cnf )
+  openssl req -x509 -new -nodes -key /keys/rootCA.key -days 365 -out /keys/rootCA.pem -config <( cat /keys/openssl.cnf )
 fi
 
 # write openssl.cnf file for cert
@@ -80,7 +80,7 @@ fi
 # generate signed cert from generated CA
 if [ ! -f /keys/haproxy.crt ]
 then
-  openssl x509 -req -in /keys/haproxy.csr -CA /keys/rootCA.pem -CAkey /keys/rootCA.key -CAcreateserial -out /keys/haproxy.crt -days 1023 -sha256 -extensions req_ext -extfile /keys/openssl.cnf
+  openssl x509 -req -in /keys/haproxy.csr -CA /keys/rootCA.pem -CAkey /keys/rootCA.key -CAcreateserial -out /keys/haproxy.crt -days 364 -sha256 -extensions req_ext -extfile /keys/openssl.cnf
 fi
 
 # combine for haproxy config
